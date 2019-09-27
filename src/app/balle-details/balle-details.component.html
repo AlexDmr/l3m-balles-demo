@@ -1,0 +1,4 @@
+<input type="color" [(ngModel)]="balle.c" />
+<button (click)="check()">Check</button>
+<input type="range" min="5" max="50" [ngModel]="balle.r" (ngModelChange)="updateR(balle, $event)" />
+<button (click)="remove()">Remove</button>

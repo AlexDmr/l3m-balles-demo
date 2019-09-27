@@ -2,6 +2,8 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {PhysiqueService} from './physique.service';
 import {Balle} from './PhysiqueDefs';
 import {Observable} from 'rxjs';
+import {MatterService} from './matter.service';
+import {Body} from 'matter-js';
 
 @Component({
   selector: 'app-root',
@@ -11,17 +13,22 @@ import {Observable} from 'rxjs';
 })
 export class AppComponent {
 
-  constructor(private ps: PhysiqueService) {}
+  constructor(private ps: PhysiqueService, private ms: MatterService) {}
 
   get ballesObs(): Observable<Balle[]> {
     return this.ps.ballesObs;
+  }
+
+  get matterBodiesObs(): Observable<Body[]> {
+    return this.ms.bodiesObs;
   }
 
   addBalle(evt: MouseEvent) {
     console.log(evt);
     const x = evt.offsetX;
     const y = this.W - evt.offsetY;
-    this.ps.addBalle(x, y, 10, 'blue');
+    this.ps.addBalle(x, y, 10, '#0000FF');
+    // this.ms.addBalle(x, y, 10, '#0000FF');
   }
 
   get W(): number {
@@ -34,5 +41,9 @@ export class AppComponent {
 
   getNbBalles(): number {
     return this.ps.getBalles().length;
+  }
+
+  points(b: Body): string {
+    return b.vertices.map(v => `${v.x},${v.y}`).join(' ');
   }
 }

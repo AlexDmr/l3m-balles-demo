@@ -26,6 +26,18 @@ export class PhysiqueService {
     });
   }
 
+  updateR(balle: Balle, r: number) {
+    balle.r = r;
+    balle.m = r * r;
+  }
+  removeBalle(balle: Balle) {
+    this.balles = this.balles.filter(b => b !== balle);
+  }
+
+  check(balle: Balle) {
+    balle.V = [10, 30];
+  }
+
   getBalles(): Balle[] {
     return this.balles;
   }
