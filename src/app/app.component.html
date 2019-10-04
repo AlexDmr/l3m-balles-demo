@@ -26,5 +26,6 @@
 <ol>
   <li *ngFor="let b of ballesObs | async">
     <app-balle-details [balle]="b"></app-balle-details>
+    <app-miage-color [(color)]="b.c"></app-miage-color>
   </li>
 </ol>
