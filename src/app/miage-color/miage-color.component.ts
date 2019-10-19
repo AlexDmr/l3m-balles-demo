@@ -47,7 +47,7 @@ interface RGB {
   B: number;
 }
 
-const reHexa = /^#(..)(..)(..)$/
+const reHexa = /^#(..)(..)(..)$/;
 function hexaToRGB(hexa: string): RGB {
   const [str, sr, sg, sb] = reHexa.exec(hexa);
   return {

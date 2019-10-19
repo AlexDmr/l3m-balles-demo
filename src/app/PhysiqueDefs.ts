@@ -1,4 +1,4 @@
-export const G = 9.8;
+let Gravity = 9.8;
 const coef = 0.95;
 export interface Balle {
   P: number[];
@@ -6,6 +6,14 @@ export interface Balle {
   r: number;
   m: number;
   c: string;
+}
+
+export function setG(v: number) {
+  Gravity = v;
+}
+
+export function getG(): number {
+  return Gravity;
 }
 
 export function manageBalles(balles: Balle[], dt: number, W: number) {
@@ -17,7 +25,7 @@ export function manageBalles(balles: Balle[], dt: number, W: number) {
     }
   });
 
-  // Application de G et collisions boites
+  // Application de Gravity et collisions boites
   balles.forEach( b => manageBalle(b, dt, W) );
 }
 function collision(b1: Balle, b2: Balle) {
@@ -66,6 +74,6 @@ function manageBalle(b: Balle, dt: number, W: number) {
     b.V[0] = -b.V[0];
   }
 
-  // Accélération G
-  b.V[1] -= G * dt;
+  // Accélération Gravity
+  b.V[1] -= Gravity * dt;
 }

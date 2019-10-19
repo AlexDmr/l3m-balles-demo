@@ -12,8 +12,17 @@ import {Body} from 'matter-js';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
+  txt = 'coucou';
 
   constructor(private ps: PhysiqueService, private ms: MatterService) {}
+
+  get G(): number {
+    return this.ps.G;
+  }
+
+  set G(g: number) {
+    this.ps.G = g;
+  }
 
   get ballesObs(): Observable<Balle[]> {
     return this.ps.ballesObs;

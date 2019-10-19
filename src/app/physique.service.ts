@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Balle, manageBalles} from './PhysiqueDefs';
+import {Balle, manageBalles, setG, getG} from './PhysiqueDefs';
 import {BehaviorSubject} from 'rxjs';
 
 @Injectable({
@@ -40,5 +40,13 @@ export class PhysiqueService {
 
   getBalles(): Balle[] {
     return this.balles;
+  }
+
+  get G(): number {
+    return getG();
+  }
+
+  set G(g: number) {
+    setG(g);
   }
 }
